@@ -30,7 +30,7 @@ install:
   - pip install --upgrade pip setuptools tox virtualenv
 
 script:
-  - tox
+  - tox -e $TOX_ENV
 
 matrix:
   allow_failures:
@@ -54,4 +54,4 @@ before_install:
   - pip install codecov
 
 after_success:
-  - codecov
+  - codecov -e TOXENV

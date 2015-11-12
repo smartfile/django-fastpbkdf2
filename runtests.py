@@ -17,14 +17,7 @@ DEFAULT_SETTINGS = dict(
             }
         },
     SILENCED_SYSTEM_CHECKS=["1_7.W001"],
-    PASSWORD_HASHERS = (
-        'django_fastpbkdf2.hashers.FastPBKDF2PasswordHasher',
-        'django_fastpbkdf2.hashers.FastPBKDF2SHA1PasswordHasher',
-        'django.contrib.auth.hashers.SHA1PasswordHasher',
-        'django.contrib.auth.hashers.MD5PasswordHasher',
-        'django.contrib.auth.hashers.UnsaltedMD5PasswordHasher',
 )
-    )
 
 
 def runtests():

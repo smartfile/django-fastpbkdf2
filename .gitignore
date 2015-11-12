@@ -1,6 +1,7 @@
 syntax: glob
 *.al
 *.bak
+*.coverage
 *.egg-info
 *.eggs
 *.la

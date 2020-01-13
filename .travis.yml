@@ -2,29 +2,41 @@ language: python
 
 sudo: false
 
-env:
-  - TOX_ENV=py27-django14
-  - TOX_ENV=py27-django15
-  - TOX_ENV=py27-django15_nosouth
-  - TOX_ENV=py27-django16
-  - TOX_ENV=py27-django17
-  - TOX_ENV=py27-django18
-  - TOX_ENV=py27-django19
-  - TOX_ENV=py27-django_trunk
-  - TOX_ENV=py32-django15
-  - TOX_ENV=py32-django16
-  - TOX_ENV=py32-django17
-  - TOX_ENV=py32-django18
-  - TOX_ENV=py32-django_trunk
-  - TOX_ENV=py33-django15
-  - TOX_ENV=py33-django16
-  - TOX_ENV=py33-django17
-  - TOX_ENV=py33-django18
-  - TOX_ENV=py33-django_trunk
-  - TOX_ENV=py34-django17
-  - TOX_ENV=py34-django18
-  - TOX_ENV=py34-django19
-  - TOX_ENV=py34-django_trunk
+jobs:
+  include:
+     - python: "2.7"
+     env:
+        - TOX_ENV=py27-django14
+        - TOX_ENV=py27-django15
+        - TOX_ENV=py27-django15_nosouth
+        - TOX_ENV=py27-django16
+        - TOX_ENV=py27-django17
+        - TOX_ENV=py27-django18
+        - TOX_ENV=py27-django19
+        - TOX_ENV=py27-django_trunk
+  include:
+     - python: "3.2"
+     env:
+        - TOX_ENV=py32-django15
+        - TOX_ENV=py32-django16
+        - TOX_ENV=py32-django17
+        - TOX_ENV=py32-django18
+        - TOX_ENV=py32-django_trunk
+  include:
+     - python: "3.3"
+     env:
+        - TOX_ENV=py33-django15
+        - TOX_ENV=py33-django16
+        - TOX_ENV=py33-django17
+        - TOX_ENV=py33-django18
+        - TOX_ENV=py33-django_trunk
+  include:
+     - python: "3.4"
+     env:
+        - TOX_ENV=py34-django17
+        - TOX_ENV=py34-django18
+        - TOX_ENV=py34-django19
+        - TOX_ENV=py34-django_trunk
 
 install:
   - pip install --upgrade pip setuptools tox virtualenv

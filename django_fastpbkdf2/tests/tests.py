@@ -23,7 +23,7 @@ class TestUtilsHashPass(TestCase):
         encoded = make_password('letmein')
         self.assertTrue(encoded.startswith('fastpbkdf2_sha256$'))
         self.assertTrue(is_password_usable(encoded))
-        self.assertTrue(check_password(u'letmein', encoded))
+        self.assertTrue(check_password('letmein', encoded))
         self.assertFalse(check_password('letmeinz', encoded))
 
     def test_pkbdf2(self):
@@ -31,7 +31,7 @@ class TestUtilsHashPass(TestCase):
         self.assertEqual(encoded,
 'fastpbkdf2_sha256$30000$seasalt$tI4kYeTLVrgdxTAIgLktSixYYIhAP6NsMaxCyxZ8hIk=')
         self.assertTrue(is_password_usable(encoded))
-        self.assertTrue(check_password(u'letmein', encoded))
+        self.assertTrue(check_password('letmein', encoded))
         self.assertFalse(check_password('letmeinz', encoded))
 
     def test_low_level_pkbdf2(self):

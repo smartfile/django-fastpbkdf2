@@ -32,7 +32,7 @@ class FastPBKDF2PasswordHasher(BasePasswordHasher):
             iterations = self.iterations
         hash = pbkdf2_hmac(self.digest, force_bytes(password),
                            force_bytes(salt), iterations)
-        hash = hash.encode('base64').strip()
+        hash = hash.strip()
         return "%s$%d$%s$%s" % (self.algorithm, iterations, salt, hash)
 
     def verify(self, password, encoded):

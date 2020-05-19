@@ -5,10 +5,7 @@ import base64
 from collections import OrderedDict
 
 from django.contrib.auth.hashers import (BasePasswordHasher, mask_hash)
-try:
-    from django.contrib.auth.hashers import force_bytes
-except ImportError:
-    from django.utils.encoding import smart_str as force_bytes
+from django.utils.encoding import force_bytes
 from django.utils.crypto import constant_time_compare
 from django.utils.translation import ugettext_noop as _
 from fastpbkdf2 import pbkdf2_hmac

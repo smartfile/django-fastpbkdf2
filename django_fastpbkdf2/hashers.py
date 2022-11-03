@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 """Django password hasher using a fast PBKDF2 implementation (fastpbkdf2)."""
 
+import base64
 from collections import OrderedDict
 
 from django.contrib.auth.hashers import (BasePasswordHasher, mask_hash)
-try:
-    from django.contrib.auth.hashers import force_bytes
-except ImportError:
-    from django.utils.encoding import smart_str as force_bytes
+from django.utils.encoding import force_bytes
 from django.utils.crypto import constant_time_compare
-from django.utils.translation import ugettext_noop as _
+from django.utils.translation import gettext_noop as _
 from fastpbkdf2 import pbkdf2_hmac
 
 
@@ -32,7 +30,7 @@ class FastPBKDF2PasswordHasher(BasePasswordHasher):
             iterations = self.iterations
         hash = pbkdf2_hmac(self.digest, force_bytes(password),
                            force_bytes(salt), iterations)
-        hash = hash.encode('base64').strip()
+        hash = base64.b64encode(hash).decode('ascii').strip()
         return "%s$%d$%s$%s" % (self.algorithm, iterations, salt, hash)
 
     def verify(self, password, encoded):
